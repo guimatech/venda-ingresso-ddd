@@ -1,25 +1,32 @@
+import { AggregateRoot } from '../../../common/domain/aggregate-root';
+import Cpf from '../../../common/domain/value-objects/cpf.vo';
+
 export type CustomerConstructorProps = {
   id?: string;
-  cpf: string;
+  cpf: Cpf;
   name: string;
 };
 
-export class Customer {
+export class Customer extends AggregateRoot {
   id: string;
-  cpf: string;
+  cpf: Cpf;
   name: string;
 
   constructor(props: CustomerConstructorProps) {
+    super();
     this.id = props.id;
     this.cpf = props.cpf;
     this.name = props.name;
   }
 
   static create(command: { name: string; cpf: string }) {
-    return new Customer(command);
+    return new Customer({
+      name: command.name,
+      cpf: new Cpf(command.cpf),
+    });
   }
 
-  toString() {
+  toJSON() {
     return {
       id: this.id,
       cpf: this.cpf,
