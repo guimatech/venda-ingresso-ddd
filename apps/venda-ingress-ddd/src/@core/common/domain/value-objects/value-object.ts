@@ -1,4 +1,4 @@
-import { isEqual } from 'lodash/isEqual';
+import isEqual from 'lodash/isEqual';
 
 export abstract class ValueObject<Value = any> {
   protected readonly _value: Value;

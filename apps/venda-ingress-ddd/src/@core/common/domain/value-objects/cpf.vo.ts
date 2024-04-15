@@ -9,7 +9,7 @@ export class Cpf extends ValueObject<string> {
   private validate(): void {
     if (this.value.length != 11) {
       throw new InvalidCpfError(
-        'CPF must have 11 digits, but has ' + this.value.length + ' digits',
+        'CPF must have 11 digits, but has ' + this.value.length + ' digits'
       );
     }
 
