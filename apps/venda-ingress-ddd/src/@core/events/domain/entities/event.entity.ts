@@ -85,6 +85,16 @@ export class Event extends AggregateRoot {
     this.date = date;
   }
 
+  publishAll() {
+    this.publish();
+    this.sections.forEach((section) => section.publishAll());
+  }
+
+  unPublishAll() {
+    this.unPublish();
+    this.sections.forEach((section) => section.unPublishAll());
+  }
+
   publish() {
     this.is_published = true;
   }
@@ -95,6 +105,7 @@ export class Event extends AggregateRoot {
 
   addSection(command: AddSectionCommand) {
     const section = EventSection.create(command);
+    this.sections.add(section);
     this.total_spots += section.total_spots;
   }
 

@@ -1,5 +1,6 @@
 import { Entity } from '../../../common/domain/entity';
 import Uuid from '../../../common/domain/value-objects/uuid.vo';
+import { EventSpot } from './event-spot';
 
 export class EventSectionId extends Uuid {}
 
@@ -54,7 +55,14 @@ export class EventSection extends Entity {
       total_spots_reserved: 0,
     });
 
+    section.initSpots();
     return section;
+  }
+
+  private initSpots() {
+    for (let i = 0; i < this.total_spots; i++) {
+      this.spots.add(EventSpot.create());
+    }
   }
 
   changeName(name: string) {
@@ -67,6 +75,16 @@ export class EventSection extends Entity {
 
   changePrice(price: number) {
     this.price = price;
+  }
+
+  publishAll() {
+    this.publish();
+    this.spots.forEach((spot) => spot.publish());
+  }
+
+  unPublishAll() {
+    this.unPublish();
+    this.spots.forEach((spot) => spot.unPublish());
   }
 
   publish() {
