@@ -19,8 +19,8 @@ export class Customer extends AggregateRoot {
     super();
     this.id =
       typeof props.id === 'string'
-      ? new CustomerId(props.id)
-      : props.id ?? new CustomerId();
+        ? new CustomerId(props.id)
+        : props.id ?? new CustomerId();
     this.cpf = props.cpf;
     this.name = props.name;
   }
