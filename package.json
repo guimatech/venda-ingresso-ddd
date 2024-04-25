@@ -1,5 +1,5 @@
 {
-  "name": "mba-ddd-venda-ingresso",
+  "name": "venda-ingresso-ddd",
   "version": "0.0.1",
   "description": "",
   "author": "",
@@ -11,13 +11,13 @@
     "start": "nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
-    "start:prod": "node dist/apps/mba-ddd-venda-ingresso/main",
+    "start:prod": "node dist/apps/venda-ingresso-ddd/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./apps/mba-ddd-venda-ingresso/test/jest-e2e.json",
+    "test:e2e": "jest --config ./apps/venda-ingresso-ddd/test/jest-e2e.json",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -36,7 +36,7 @@
     "eventemitter2": "^6.4.9",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.1",
-    "uuid": "^9.0.1"
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.0.0",
@@ -47,7 +47,6 @@
     "@swc/jest": "^0.2.26",
     "@types/express": "^4.17.17",
     "@types/jest": "^29.5.2",
-    "@types/lodash.isequal": "^4.5.8",
     "@types/node": "^20.3.1",
     "@types/supertest": "^2.0.12",
     "@typescript-eslint/eslint-plugin": "^5.59.11",
@@ -89,7 +88,7 @@
   "mikro-orm": {
     "useTsNode": true,
     "configPaths": [
-      "./apps/mba-ddd-venda-ingresso/src/mikro-orm.config.ts",
+      "./apps/venda-ingresso-ddd/src/mikro-orm.config.ts",
       "./dist/mikro-orm.config.js"
     ]
   }
